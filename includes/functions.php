@@ -17,24 +17,23 @@ function insert_user() {
         $fullname = $_POST['fullname'];
         $designation = $_POST['designation'];
         $email = $_POST['email'];
-        $user_group = $_POST['user_group'];
-        $date_of_birth = $_POST['date_of_birth'];
-        $division = $_POST['division'];
+        // $user_group = $_POST['user_group'];
+        // $date_of_birth = $_POST['date_of_birth'];
+        // $division = $_POST['division'];
         $station = $_POST['station'];
-        $date_transfered = $_POST['date_transfered'];
-        if ($pj && $fullname && $designation && $email && $user_group) {
+        // $date_transfered = $_POST['date_transfered'];
+        if ($pj && $fullname && $designation && $email) {
             if (isset($_POST['edit_pj']) && $_POST['edit_pj'] != '') {
                 $query = "UPDATE users SET pj = '$pj', fullname = '$fullname', Designation = '$designation',"
-                        . " email = '$email', user_group = '$user_group', Station = '$station', "
-                        . "Division = '$division', DateTransfered = '$date_transfered', "
-                        . "DateOfBirth = '$date_of_birth' WHERE pj like '$_POST[edit_pj]'";
-                $insert_user = mysqli_query($conn, $query);
+                        . " email = '$email', Station = '$station', "
+                        . " WHERE pj like '$_POST[edit_pj]'";
+                $insert_user = pg_query($conn, $query);
             } else {
-                $query = "INSERT INTO users (pj, fullname, designation, email, user_group,"
-                        . " password, Station, Division, DateOfBirth, DateTransfered) ";
-                $query .= " VALUES ('$pj', '$fullname', '$designation', '$email', '$user_group', "
-                        . "'pass', '$station', '$division', '$date_of_birth', '$date_transfered')";
-                $insert_user = mysqli_query($conn, $query);
+                $query = "INSERT INTO users (pj, fullname, designation, email, "
+                        . " password, Station) ";
+                $query .= " VALUES ('$pj', '$fullname', '$designation', '$email', "
+                        . "'pass', '$station')";
+                $insert_user = pg_query($conn, $query);
             }
 
             if ($insert_user) {
@@ -68,7 +67,7 @@ function insert_station() {
             $query = "INSERT INTO stations (StationCode, StationName, UnitCode) ";
             $query .= " VALUES ('$station_code', '$station_name', '$unit_code')";
 
-            $insert_user = mysqli_query($conn, $query);
+            $insert_user = pg_query($conn, $query);
 
             if ($insert_user) {
                 echo "Station inserted successfully";
@@ -100,56 +99,55 @@ function insert_adminunit() {
     }
 }
 
-function insert_division() {
-    global $conn;
+// function insert_division() {
+//     global $conn;
 
-    if (isset($_POST['submit'])) {
-        $division = $_POST['division'];
-        if ($division) {
-            $query = "INSERT INTO divisions (Division) ";
-            $query .= " VALUES ('$division')";
+//     if (isset($_POST['submit'])) {
+//         $division = $_POST['division'];
+//         if ($division) {
+//             $query = "INSERT INTO divisions (Division) ";
+//             $query .= " VALUES ('$division')";
 
-            $insert_user = mysqli_query($conn, $query);
+//             $insert_user = mysqli_query($conn, $query);
 
-            if ($insert_user) {
-                echo "Division inserted successfully";
-            } else {
-                echo "Save failed";
-            }
-        }
-    }
-}
+//             if ($insert_user) {
+//                 echo "Division inserted successfully";
+//             } else {
+//                 echo "Save failed";
+//             }
+//         }
+//     }
+// }
 
 //INSERT leave_types FUNCTION
 
-function insert_leave_type() {
+// function insert_leave_type() {
 
-    global $conn;
+//     global $conn;
 
-    if (isset($_POST['submit'])) {
+//     if (isset($_POST['submit'])) {
 
-        $leave_type = $_POST['leave_type'];
+//         $leave_type = $_POST['leave_type'];
 
-        if ($leave_type == "" || empty($leave_type)) {
+//         if ($leave_type == "" || empty($leave_type)) {
 
-            echo "This field cannot be empty";
-        } else {
+//             echo "This field cannot be empty";
+//         } else {
 
-            $query = " INSERT INTO leave_types(leave_type) ";
-            $query .= " VALUES('{$leave_type}') ";
-            $create_leave_type_query = mysqli_query($conn, $query); //send the inserted data to db
+//             $query = " INSERT INTO leave_types(leave_type) ";
+//             $query .= " VALUES('{$leave_type}') ";
+//             $create_leave_type_query = mysqli_query($conn, $query); //send the inserted data to db
 
-            if (!$create_leave_type_query) {
+//             if (!$create_leave_type_query) {
 
-                die('Query Failed' . mysqli_error($conn));
-            }
-        }
-    }
-}
+//                 die('Query Failed' . mysqli_error($conn));
+//             }
+//         }
+//     }
+// }
 
 
-
-function insert_event(){
+function insert_activity(){
 
     global $conn;
 
@@ -165,7 +163,7 @@ function insert_event(){
         $query = "INSERT INTO events(fullname, event, location, start_date, end_date) ";
         $query .= " VALUES ('$fullname', '$event', '$location', '$start_date', '$end_date')";
 		//echo $query;
-        $insert_event = mysqli_query($conn, $query); 
+        $insert_event = pg_query($conn, $query); 
         if($insert_event){
         echo "event inserted successfully";
         }else {
@@ -181,42 +179,43 @@ function insert_event(){
 
 //FIND leave_types FUNCTION
 
-function find_all_leave_types() {
-    global $conn;
+// function find_all_leave_types() {
+//     global $conn;
 
-    $query = " SELECT * FROM leave_types ";
-    $select_leave_types = mysqli_query($conn, $query);
+//     $query = " SELECT * FROM leave_types ";
+//     $select_leave_types = mysqli_query($conn, $query);
 
-    while ($row = mysqli_fetch_assoc($select_leave_types)) {
+//     while ($row = mysqli_fetch_assoc($select_leave_types)) {
 
 
-        $leave_type = $row['leave_type'];
+//         $leave_type = $row['leave_type'];
 
-        echo "<tr>";
-        echo " <td>{$leave_type}</td>";
+//         echo "<tr>";
+//         echo " <td>{$leave_type}</td>";
 
-        echo " <td><a href = 'index.php?p=leave_types&edit={$leave_type}' title='Edit {$leave_type}'><i class=\"fa fa-edit\"></i></a></td> ";
-        echo " <td><a href = 'index.php?p=leave_types&delete={$leave_type}' title='Delete {$leave_type}'><i class=\"fa fa-remove\"></i></a></td>"; //using $_GET super global  
+//         echo " <td><a href = 'index.php?p=leave_types&edit={$leave_type}' title='Edit {$leave_type}'><i class=\"fa fa-edit\"></i></a></td> ";
+//         echo " <td><a href = 'index.php?p=leave_types&delete={$leave_type}' title='Delete {$leave_type}'><i class=\"fa fa-remove\"></i></a></td>"; //using $_GET super global  
 
-        echo "</tr>";
-    }
-}
+//         echo "</tr>";
+//     }
+// }
 
 //DELETE CATEGORY
 
-function Delete_Leave_type() {
-    global $conn;
-    if (isset($_GET['delete'])) {
-        $get_id = $_GET['delete'];
-        $query = " DELETE FROM leave_types WHERE leave_type = '{$get_id}' ";
-        $delete_query = mysqli_query($conn, $query);
-        ?>
-        <script type="text/javascript">
-            window.location = "index.php?p=leave_types";
-        </script>
-        <?php
+// function Delete_Leave_type() {
+//     global $conn;
+//     if (isset($_GET['delete'])) {
+//         $get_id = $_GET['delete'];
+//         $query = " DELETE FROM leave_types WHERE leave_type = '{$get_id}' ";
+//         $delete_query = mysqli_query($conn, $query);
+//         ?>
+//         <script type="text/javascript">
+//             window.location = "index.php?p=leave_types";
+//         </script>
+//         <?php
 
-        //header("Location: leave_types.php"); //refreshing leave_types page
-    }
-}
+//         //header("Location: leave_types.php"); //refreshing leave_types page
+//     }
+// }
+
 ?>

@@ -4,7 +4,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Update Theme <small>Please update theme, start & completion dates</small></h2>
+                    <h2>Update Policy Direction <small>Please update policy direction, start & completion dates</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -30,8 +30,8 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Policy Direction <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <select class="select2_group form-control">
-                            <option value="">-- Select Strategy --</option>
+                           <select class="select2_group form-control">
+                            <option value="">-- Select policy direction --</option>
                             <optgroup label="Alaskan/Hawaiian Time Zone">
                               <option value="AK">Alaska</option>
                               <option value="HI">Hawaii</option>
@@ -42,54 +42,53 @@
                             </optgroup>
                             <optgroup label="Mountain Time Zone">
                               <option value="AZ">Arizona</option>
-                         
+                              <option value="CO">Colorado</option>
+                              <option value="ID">Idaho</option>
                  
                             </optgroup>
                             <optgroup label="Central Time Zone">
                               <option value="AL">Alabama</option>
-                        
+                              <option value="AR">Arkansas</option>
+                              <option value="IL">Illinois</option>
                              
                             </optgroup>
                             <optgroup label="Eastern Time Zone">
                               <option value="CT">Connecticut</option>
-                              
+                              <option value="DE">Delaware</option>
+                              <option value="FL">Florida</option>
                      
                             </optgroup>
                           </select>
                         </div>
                       </div>
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Theme <span class="required">*</span>
-                        </label>
+                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Description</label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+                          <textarea class="form-control" rows="1" placeholder='Performance Measure'></textarea>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Description</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
                         </div>
                       </div>
 
-
-         <!--            <div class="form-group">
-                    <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Start Date</label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                        <div class='input-group date' id='datetimepicker7'>
-                            <input type='text' class="form-control" />
-                            <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
-                        </div>
-                    </div>
-                    </div> -->
-
-          
-<!-- 
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Champion <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Supervising Unit <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+                          <select class="select2_single form-control" tabindex="-1">
+                            <option value="">-- Select responsible person --</option>
+                      
+                            <option value="AK">Alaska</option>
+                            <option value="HI">Hawaii</option>
+                            <option value="CA">California</option>
+                   
+                          </select>
                         </div>
-                      </div> -->
-
-           
+                      </div>
+          
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Dates (Start & Planned Completion) <span class="required">*</span></label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
@@ -102,34 +101,17 @@
 
 
 
-                   <!-- <fieldset> -->
-                      <div class="form-group">
-                             <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Completion Date </label>
-                             <!-- <div class="col-md-3 col-sm-6 col-xs-12"> -->
-                               <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" class="form-control has-feedback-left" id="single_cal2" placeholder="First Name" aria-describedby="inputSuccess2Status2">
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Completion Date <span class="required">*</span></label>
+                          <!-- <div class="col-md-6 col-sm-6 col-xs-12"> -->
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="text" class="form-control has-feedback-left" id="single_cal4" placeholder="First Name" aria-describedby="inputSuccess2Status4">
                                 <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
-                                <span id="inputSuccess2Status2" class="sr-only">(success)</span>
+                                <span id="inputSuccess2Status4" class="sr-only">(success)</span>
                               </div>
-                            <!-- </div> -->
-                        </div>
-                   <!--      </fieldset> -->
-
-
-
-                      <div class="form-group">
-                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Responsibility</label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <select class="select2_single form-control" tabindex="-1">
-                            <option value="">-- Select responsible person --</option>
-                      
-                            <option value="AK">Alaska</option>
-                            <option value="HI">Hawaii</option>
-                          
-                    
-                          </select>
-                        </div>
-                      </div>
+                          <!--   </div> -->
+                          <!-- </div> -->
+                    </div> 
 
 
 
@@ -138,7 +120,7 @@
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                           <button class="btn btn-primary" type="button">Cancel</button>
               <button class="btn btn-primary" type="reset">Reset</button>
-                          <button type="submit" class="btn btn-success">Update Theme</button>
+                          <button type="submit" class="btn btn-success">Update Strategy</button>
                         </div>
                       </div>
 

@@ -2,7 +2,7 @@
 
 
                         <?php
-                      insert_user();
+                      insert_activity();
                       $pj = "";
                       $fullname = "";
                       $designation = "";
@@ -68,58 +68,23 @@
                             <optgroup label="Pacific Time Zone">
                               <option value="CA">California</option>
                               <option value="NV">Nevada</option>
-                              <option value="OR">Oregon</option>
-                              <option value="WA">Washington</option>
+                         
                             </optgroup>
                             <optgroup label="Mountain Time Zone">
                               <option value="AZ">Arizona</option>
                               <option value="CO">Colorado</option>
-                              <option value="ID">Idaho</option>
-                              <option value="MT">Montana</option>
-                              <option value="NE">Nebraska</option>
-                              <option value="NM">New Mexico</option>
-                              <option value="ND">North Dakota</option>
-                              <option value="UT">Utah</option>
-                              <option value="WY">Wyoming</option>
+                      
                             </optgroup>
                             <optgroup label="Central Time Zone">
                               <option value="AL">Alabama</option>
                               <option value="AR">Arkansas</option>
                               <option value="IL">Illinois</option>
-                              <option value="IA">Iowa</option>
-                              <option value="KS">Kansas</option>
-                              <option value="KY">Kentucky</option>
-                              <option value="LA">Louisiana</option>
-                              <option value="MN">Minnesota</option>
-                              <option value="MS">Mississippi</option>
-                              <option value="MO">Missouri</option>
-                              <option value="OK">Oklahoma</option>
-                              <option value="SD">South Dakota</option>
-                              <option value="TX">Texas</option>
-                              <option value="TN">Tennessee</option>
-                              <option value="WI">Wisconsin</option>
+              
                             </optgroup>
                             <optgroup label="Eastern Time Zone">
                               <option value="CT">Connecticut</option>
                               <option value="DE">Delaware</option>
-                              <option value="FL">Florida</option>
-                              <option value="GA">Georgia</option>
-                              <option value="IN">Indiana</option>
-                              <option value="ME">Maine</option>
-                              <option value="MD">Maryland</option>
-                              <option value="MA">Massachusetts</option>
-                              <option value="MI">Michigan</option>
-                              <option value="NH">New Hampshire</option>
-                              <option value="NJ">New Jersey</option>
-                              <option value="NY">New York</option>
-                              <option value="NC">North Carolina</option>
-                              <option value="OH">Ohio</option>
-                              <option value="PA">Pennsylvania</option>
-                              <option value="RI">Rhode Island</option>
-                              <option value="SC">South Carolina</option>
-                              <option value="VT">Vermont</option>
-                              <option value="VA">Virginia</option>
-                              <option value="WV">West Virginia</option>
+                   
                             </optgroup>
                           </select>
                         </div>
@@ -157,9 +122,6 @@
                         <input type="text" class="form-control has-feedback-left" id="inputSuccess4" placeholder="Email">
                         <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
                       </div> -->
-
-
-
 
                       <div class="form-group has feedback">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Baseline <span class="required">*</span>
@@ -214,33 +176,43 @@
                             <option value="AK">Alaska</option>
                             <option value="HI">Hawaii</option>
                             <option value="CA">California</option>
-                            <option value="NV">Nevada</option>
-                            <option value="OR">Oregon</option>
-                            <option value="WA">Washington</option>
-                            <option value="AZ">Arizona</option>
-                            <option value="CO">Colorado</option>
-                            <option value="ID">Idaho</option>
-                            <option value="MT">Montana</option>
-                            <option value="NE">Nebraska</option>
-                            <option value="NM">New Mexico</option>
-                            <option value="ND">North Dakota</option>
-                            <option value="UT">Utah</option>
-                            <option value="WY">Wyoming</option>
-                            <option value="AR">Arkansas</option>
-                            <option value="IL">Illinois</option>
-                            <option value="IA">Iowa</option>
-                            <option value="KS">Kansas</option>
-                            <option value="KY">Kentucky</option>
-                            <option value="LA">Louisiana</option>
-                            <option value="MN">Minnesota</option>
-                            <option value="MS">Mississippi</option>
-                            <option value="MO">Missouri</option>
-                            <option value="OK">Oklahoma</option>
-                            <option value="SD">South Dakota</option>
-                            <option value="TX">Texas</option>
+                           
                           </select>
                         </div>
                       </div>
+
+
+
+                       <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Activity Status <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          
+                          <select class="select2_single form-control" tabindex="-1">
+                            <option value="">-- Activity Status --</option>
+                      
+                            <option value="AK">Alaska</option>
+                            <option value="HI">Hawaii</option>
+                            <option value="CA">California</option>
+                           
+                          </select>
+                        </div>
+                      </div>
+
+
+                      
+
+                     <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Dates (Start & Completion) <span class="required">*</span></label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div id="reportrange_right" class="pull-left" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
+                          <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                          <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
+                        </div>
+                      </div>
+                    </div>
+
+
 
 
 

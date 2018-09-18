@@ -6,11 +6,13 @@
                   <li><a href="index.php?p=home"><i class="fa fa-home"></i> Home</a></li>
                   <li><a><i class="fa fa-edit"></i> Manage <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-		      <li><a href="index.php?p=themes">Manage Theme </a>
+		      <li><a href="index.php?p=strategy">Manage Strategy </a>
+                      <li><a href="index.php?p=themes">Manage Theme</a></li>
                       <li><a href="index.php?p=activities">Activities</a></li>
+                      <li><a href="index.php?p=station">Manage Station</a></li>
                       <li><a href="index.php?p=user">Manage Staff</a></li>
 <!--                       <li><a href="index.php?p=Baseline">new activities</a></li>
- -->                      <li><a href="index.php?p=adminunits">Manage Implementing Units</a></li>
+ -->                      <li><a href="index.php?p=adminunit">Manage Implementing Units</a></li>
                      <!--  <li><a href="index.php?p=secretariat">Secretariat</a></li> -->
 		     <!--  <li><a href="index.php?p=change_pjs">update activities</a></li>		 -->				
                       <!--li><a href="form_advanced.html">Performance Measure</a></li>
@@ -20,7 +22,7 @@
                       <li><a href="form_buttons.html">Form Buttons</a></li-->
                     </ul>
                   </li>
-
+       
 		   <li><a><i class="fa fa-institution"></i> Performance Measures <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="index.php?p=baseline">Baseline</a></li>
