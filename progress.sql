@@ -43,7 +43,7 @@ ALTER TABLE public.activities OWNER TO postgres;
 -- object: public.strategy | type: TABLE --
 -- DROP TABLE IF EXISTS public.strategy CASCADE;
 CREATE TABLE public.strategy(
-	strategy_id smallint NOT NULL ,
+	strategy_id smallint NOT NULL GENERATED ALWAYS AS IDENTITY ,
 	strategy varchar(250),
 	description text,
 	startdate date,
@@ -114,7 +114,6 @@ CREATE TABLE public.users(
 	pj varchar,
 	fullname varchar(50),
 	designation varchar(100),
-	station varchar(100),
 	CONSTRAINT users_pk PRIMARY KEY (username)
 
 );
@@ -163,7 +162,7 @@ CREATE SEQUENCE public.strategy
 	START WITH 1
 	CACHE 1
 	NO CYCLE
-	OWNED BY NONE; 
+	OWNED BY NONE;
 -- ddl-end --
 ALTER SEQUENCE public.strategy OWNER TO postgres;
 -- ddl-end --
@@ -212,7 +211,7 @@ ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- object: strategy_fk | type: CONSTRAINT --
 -- ALTER TABLE public.themes DROP CONSTRAINT IF EXISTS strategy_fk CASCADE;
-ALTER TABLE public.themes ADD CONSTRAINT strategy_fk FOREIGN KEY (strategy_id_strategy)  
+ALTER TABLE public.themes ADD CONSTRAINT strategy_fk FOREIGN KEY (strategy_id_strategy)
 REFERENCES public.strategy (strategy_id) MATCH FULL
 ON DELETE SET NULL ON UPDATE CASCADE;
 -- ddl-end --
@@ -279,6 +278,74 @@ ON DELETE SET NULL ON UPDATE CASCADE;
 -- ALTER TABLE public.strategy_resp DROP CONSTRAINT IF EXISTS users_fk CASCADE;
 ALTER TABLE public.strategy_resp ADD CONSTRAINT users_fk FOREIGN KEY (username_users)
 REFERENCES public.users (username) MATCH FULL
+ON DELETE SET NULL ON UPDATE CASCADE;
+-- ddl-end --
+
+-- object: public.adminunit | type: TABLE --
+-- DROP TABLE IF EXISTS public.adminunit CASCADE;
+CREATE TABLE public.adminunit(
+	unit_id serial NOT NULL,
+	unit_code smallint,
+	admin_unit varchar(100),
+	CONSTRAINT adminunit_pk PRIMARY KEY (unit_id)
+
+);
+-- ddl-end --
+ALTER TABLE public.adminunit OWNER TO postgres;
+-- ddl-end --
+
+-- object: public.stations | type: TABLE --
+-- DROP TABLE IF EXISTS public.stations CASCADE;
+CREATE TABLE public.stations(
+	station_id serial NOT NULL,
+	station_code smallint,
+	station_name varchar(100),
+	region varchar(100),
+	unit_code smallint,
+	CONSTRAINT stations_pk PRIMARY KEY (station_id)
+
+);
+-- ddl-end --
+ALTER TABLE public.stations OWNER TO postgres;
+-- ddl-end --
+
+-- object: public.user_admin_unit | type: TABLE --
+-- DROP TABLE IF EXISTS public.user_admin_unit CASCADE;
+CREATE TABLE public.user_admin_unit(
+	username varchar(100),
+	termination_date date,
+	allocation_date date,
+	unit_id smallint,
+	station_id smallint,
+	user_admin_unit_id serial NOT NULL,
+	username_users varchar(100),
+	station_id_stations integer,
+	unit_id_adminunit integer,
+	CONSTRAINT user_admin_unit_pk PRIMARY KEY (user_admin_unit_id)
+
+);
+-- ddl-end --
+ALTER TABLE public.user_admin_unit OWNER TO postgres;
+-- ddl-end --
+
+-- object: users_fk | type: CONSTRAINT --
+-- ALTER TABLE public.user_admin_unit DROP CONSTRAINT IF EXISTS users_fk CASCADE;
+ALTER TABLE public.user_admin_unit ADD CONSTRAINT users_fk FOREIGN KEY (username_users)
+REFERENCES public.users (username) MATCH FULL
+ON DELETE SET NULL ON UPDATE CASCADE;
+-- ddl-end --
+
+-- object: stations_fk | type: CONSTRAINT --
+-- ALTER TABLE public.user_admin_unit DROP CONSTRAINT IF EXISTS stations_fk CASCADE;
+ALTER TABLE public.user_admin_unit ADD CONSTRAINT stations_fk FOREIGN KEY (station_id_stations)
+REFERENCES public.stations (station_id) MATCH FULL
+ON DELETE SET NULL ON UPDATE CASCADE;
+-- ddl-end --
+
+-- object: adminunit_fk | type: CONSTRAINT --
+-- ALTER TABLE public.user_admin_unit DROP CONSTRAINT IF EXISTS adminunit_fk CASCADE;
+ALTER TABLE public.user_admin_unit ADD CONSTRAINT adminunit_fk FOREIGN KEY (unit_id_adminunit)
+REFERENCES public.adminunit (unit_id) MATCH FULL
 ON DELETE SET NULL ON UPDATE CASCADE;
 -- ddl-end --
 

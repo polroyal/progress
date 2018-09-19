@@ -18,7 +18,7 @@
                           if ($row = pg_fetch_array($results)) {
                               $pj = $row['pj'];
                               $fullname = $row['fullname'];
-                              $designation = $row['Designation'];
+                              $designation = $row['designation'];
                               $email = $row['email'];
                               // $user_group = $row['user_group'];
                               // $date_of_birth = $row['DateOfBirth'];
@@ -131,8 +131,8 @@
                                 <option value="">--Select Station--</option>
                                 <?php
                                 $query = "SELECT * FROM stationsv";
-                                $results = mysqli_query($conn, $query);
-                                while ($row = mysqli_fetch_array($results)) {
+                                $results = pg_query($conn, $query);
+                                while ($row = pg_fetch_array($results)) {
                                     echo "<option value='$row[StationCode]' " . (strtolower($row['StationCode']) == strtolower($station) ? 'selected="selected"' : '') . ">$row[StationName]</option>";
                                 }
                                 ?>

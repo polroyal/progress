@@ -88,7 +88,7 @@ function insert_adminunit() {
             $query = "INSERT INTO adminunits (UnitCode, AdminUnit) ";
             $query .= " VALUES ('$unit_code', '$admin_unit')";
 
-            $insert_user = mysqli_query($conn, $query);
+            $insert_user = pg_query($conn, $query);
 
             if ($insert_user) {
                 echo "Admin Unit inserted successfully";
