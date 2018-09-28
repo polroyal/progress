@@ -7,6 +7,7 @@
                       $fullname = "";
                       $designation = "";
                       $email = "";
+                      $username = "";
                       // $user_group = "";
                       // $date_of_birth = "";
                       // $division = "";
@@ -20,6 +21,7 @@
                               $fullname = $row['fullname'];
                               $designation = $row['Designation'];
                               $email = $row['email'];
+                              $username = $row['username'];
                               // $user_group = $row['user_group'];
                               // $date_of_birth = $row['DateOfBirth'];
                               // $division = $row['Division'];
@@ -155,10 +157,10 @@
                             <!-- <select name="station" id="" class="form-control" required="required">
                                 <option value="">--Select Station--</option>
                                 <?php
-                                $query = "SELECT * FROM stationsv";
-                                $results = mysqli_query($conn, $query);
-                                while ($row = mysqli_fetch_array($results)) {
-                                    echo "<option value='$row[StationCode]' " . (strtolower($row['StationCode']) == strtolower($station) ? 'selected="selected"' : '') . ">$row[StationName]</option>";
+                                $query = "SELECT * FROM stations";
+                                $results = pg_query($conn, $query);
+                                while ($row = pg_fetch_array($results)) {
+                                    echo "<option value='$row[station_code]' " . (strtolower($row['station_code']) == strtolower($station) ? 'selected="selected"' : '') . ">$row[station_name]</option>";
                                 }
                                 ?>
                             </select> -->
@@ -221,7 +223,7 @@
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                           <!-- <button class="btn btn-primary" type="button">Cancel</button> -->
               <button class="btn btn-primary" type="reset">Reset</button>
-                          <button type="submit" class="btn btn-success">update activity</button>
+                          <button type="submit" class="btn btn-success" name="submit">update activity</button>
                         </div>
                       </div>
 

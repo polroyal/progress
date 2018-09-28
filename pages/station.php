@@ -38,21 +38,21 @@
                       <div class="form-group">
                         <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Station Name: <span class="required">*</span></label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="station_name" class="form-control col-md-7 col-xs-12" type="text" name="station_name">
+                          <input id="fullname" class="form-control col-md-7 col-xs-12" type="text" name="station_name">
                         </div>
                       </div>
 
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Admin Unit <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Admin Unit <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <select name="unit_code" id="" class="form-control">
                             <option value=""> -- Select Admin Unit -- </option>
                             <?php
-                            $query = "SELECT * FROM adminunits";
+                            $query = "SELECT * FROM adminunit";
                             $results = pg_query($conn, $query);
                             while ($row = pg_fetch_array($results)) {
-                                echo "<option value='$row[UnitCode]'>$row[AdminUnit]</option>";
+                                echo "<option value='$row[unit_code]'>$row[admin_unit]</option>";
                             }
                             ?>
                         </select>
@@ -66,9 +66,9 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                          <button class="btn btn-primary" type="button">Cancel</button>
+                          <button class="btn btn-danger" type="button">Cancel</button>
               <button class="btn btn-primary" type="reset">Reset</button>
-                          <button type="submit" class="btn btn-success">Save Station</button>
+                          <button type="submit" class="btn btn-success" name="submit">Save Station</button>
                         </div>
                       </div>
 

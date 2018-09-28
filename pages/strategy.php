@@ -26,51 +26,26 @@
                     <br />
                     <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
 
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Policy Direction <span class="required">*</span>
+                      
+                    <div class="form-group has feedback">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Policy Direction/Strategy <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                           <select class="select2_group form-control">
-                            <option value="">-- Select policy direction --</option>
-                            <optgroup label="Alaskan/Hawaiian Time Zone">
-                              <option value="AK">Alaska</option>
-                              <option value="HI">Hawaii</option>
-                            </optgroup>
-                            <optgroup label="Pacific Time Zone">
-                              <option value="CA">California</option>
-                
-                            </optgroup>
-                            <optgroup label="Mountain Time Zone">
-                              <option value="AZ">Arizona</option>
-                              <option value="CO">Colorado</option>
-                              <option value="ID">Idaho</option>
-                 
-                            </optgroup>
-                            <optgroup label="Central Time Zone">
-                              <option value="AL">Alabama</option>
-                              <option value="AR">Arkansas</option>
-                              <option value="IL">Illinois</option>
-                             
-                            </optgroup>
-                            <optgroup label="Eastern Time Zone">
-                              <option value="CT">Connecticut</option>
-                              <option value="DE">Delaware</option>
-                              <option value="FL">Florida</option>
-                     
-                            </optgroup>
-                          </select>
+                          <input type="text" id="" name="strategy" required="required" data-validate-minmax="10,100" class="form-control col-md-7 col-xs-12">
+                          
                         </div>
                       </div>
                       <div class="form-group">
                         <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Description</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <textarea class="form-control" rows="1" placeholder='strategy details'></textarea>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Performance Measure</label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <textarea class="form-control" rows="1" placeholder='Performance Measure'></textarea>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Description</label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
                         </div>
                       </div>
 
@@ -84,7 +59,7 @@
                             <option value="AK">Alaska</option>
                             <option value="HI">Hawaii</option>
                             <option value="CA">California</option>
-                   
+
                           </select>
                         </div>
                       </div>
@@ -105,7 +80,7 @@
                       <label class="control-label col-md-3 col-sm-3 col-xs-12">Completion Date <span class="required">*</span></label>
                           <!-- <div class="col-md-6 col-sm-6 col-xs-12"> -->
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" class="form-control has-feedback-left" id="single_cal4" placeholder="First Name" aria-describedby="inputSuccess2Status4">
+                                <input type="text" class="form-control has-feedback-left" id="single_cal4" name="completion_date" aria-describedby="inputSuccess2Status4">
                                 <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
                                 <span id="inputSuccess2Status4" class="sr-only">(success)</span>
                               </div>
@@ -113,14 +88,12 @@
                           <!-- </div> -->
                     </div> 
 
-
-
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                           <button class="btn btn-primary" type="button">Cancel</button>
-              <button class="btn btn-primary" type="reset">Reset</button>
-                          <button type="submit" class="btn btn-success">Update Strategy</button>
+                          <button class="btn btn-primary" type="reset">Reset</button>
+                          <button type="submit" class="btn btn-success" name="submit">Update Strategy</button>
                         </div>
                       </div>
 

@@ -20,7 +20,7 @@ if (false) {//$page == "home"){
     ?>
     <script type="text/javascript">
         window.location = "calendar.php";
-    </script> 9465
+    </script> 
     <?php
 }
 ?>
