@@ -236,12 +236,12 @@ function  init_horbar() {
 				legend: {
 				  x: 0,
 				  data: [
-				  <?php 
-		$query = "SELECT DISTINCT leave_type from durationv WHERE pj like '$_SESSION[leave_pj]' group by leave_type";
-		$result = pg_query($conn, $query);
-		while ($row = pg_fetch_assoc($result)){
-			echo "'" . $row['leave_type'] . "',";
-		} ?>]
+				<!--  <?php 
+		// $query = "SELECT DISTINCT leave_type from durationv WHERE pj like '$_SESSION[leave_pj]' group by leave_type";
+		// $result = pg_query($conn, $query);
+		// while ($row = pg_fetch_assoc($result)){
+		// 	echo "'" . $row['leave_type'] . "',";
+		//} ?>] -->
 				},
 				toolbox: {
 				  show: true,
@@ -262,12 +262,12 @@ function  init_horbar() {
 				  data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 				}],
 				series: [
-				<?php
-$query = "SELECT leave_type, Sum(Jan) as Jan, Sum(Feb) as Feb, Sum(Mar) as Mar, Sum(Apr) as Apr, Sum(May) as May, Sum(Jun) as Jun, " . 
-   "Sum(Jul) as Jul, Sum(Aug) as Aug, Sum(Sep) as Sep, Sum(Oct) as Oct, Sum(Nov) as Nov, Sum(Dece) as Dece from durationv group by " .
-   " leave_type ";
-$result = pg_query($conn, $query);
-while ($row = pg_fetch_assoc($result)){ ?>
+				<!--<?php
+// $query = "SELECT leave_type, Sum(Jan) as Jan, Sum(Feb) as Feb, Sum(Mar) as Mar, Sum(Apr) as Apr, Sum(May) as May, Sum(Jun) as Jun, " . 
+//    "Sum(Jul) as Jul, Sum(Aug) as Aug, Sum(Sep) as Sep, Sum(Oct) as Oct, Sum(Nov) as Nov, Sum(Dece) as Dece from durationv group by " .
+//    " leave_type ";
+// $result = pg_query($conn, $query);
+// while ($row = pg_fetch_assoc($result)){ ?> 
 	{
 	  name: '<?php echo $row['leave_type']; ?>',
 	  type: 'bar',

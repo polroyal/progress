@@ -1,41 +1,8 @@
 <div class="col-md-12 col-sm-12 col-xs-12">
 
-
-                        <?php
-                      insert_user();
-                      $pj = "";
-                      $fullname = "";
-                      $username = "";
-                      $designation = "";
-                      $email = "";
-                      // $user_group = "";
-                      // $date_of_birth = "";
-                      // $division = "";
-                      $station = "";
-                      // $date_transfered = "";
-                      if (isset($_GET['e'])) {
-                          $query = "SELECT * FROM users WHERE pj like '$_GET[e]'";
-                          $results = pg_query($conn, $query);
-                          if ($row = pg_fetch_array($results)) {
-                              $pj = $row['pj'];
-                              $fullname = $row['fullname'];
-                              $username = $row['username'];
-                              $designation = $row['designation'];
-                              $email = $row['email'];
-                              // $user_group = $row['user_group'];
-                              // $date_of_birth = $row['DateOfBirth'];
-                              // $division = $row['Division'];
-                              $station = $row['Station'];
-                              // $date_transfered = $row['DateTransfered'];
-                          }
-                      }
-
-                      ?>
-
-
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Add user <small>This would be for admins</small></h2>
+                    <h2>Add user <small>This would be for admins - please add a user</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -54,8 +21,10 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
+
+                    <?php insert_user(); ?>
                     <br />
-                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="<?php echo $_SERVER['REQUEST_URI']; ?>" >
 
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Fullname <span class="required">*</span>

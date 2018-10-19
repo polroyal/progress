@@ -8,11 +8,7 @@
                       $designation = "";
                       $email = "";
                       $username = "";
-                      // $user_group = "";
-                      // $date_of_birth = "";
-                      // $division = "";
                       $station = "";
-                      // $date_transfered = "";
                       if (isset($_GET['e'])) {
                           $query = "SELECT * FROM users WHERE pj like '$_GET[e]'";
                           $results = pg_query($conn, $query);
@@ -22,17 +18,11 @@
                               $designation = $row['Designation'];
                               $email = $row['email'];
                               $username = $row['username'];
-                              // $user_group = $row['user_group'];
-                              // $date_of_birth = $row['DateOfBirth'];
-                              // $division = $row['Division'];
                               $station = $row['Station'];
-                              // $date_transfered = $row['DateTransfered'];
                           }
                       }
 
                       ?>
-
-
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>Update activities <small>Please update all your activities with the form below</small></h2>
@@ -193,9 +183,14 @@
                           <select class="select2_single form-control" tabindex="-1">
                             <option value="">-- Activity Status --</option>
                       
-                            <option value="AK">Alaska</option>
-                            <option value="HI">Hawaii</option>
-                            <option value="CA">California</option>
+                            <?php
+                            $query = "SELECT * FROM activities WHERE ";
+                            $results = pg_query($conn, $query);
+                            while ($row = pg_fetch_array($results)) {
+                                echo "<option value='$row[username]'>$row[fullname]</option>";
+                            }
+                            ?>
+
                            
                           </select>
                         </div>

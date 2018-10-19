@@ -9,55 +9,81 @@ function confirm($result) {
     }
 }
 
-function insert_user() {
-    global $conn;
+// insert user
+function insert_user(){
+  global $conn;
 
-    if (isset($_POST['submit'])) {
-        $pj = $_POST['pj'];
-        $fullname = $_POST['fullname'];
-        $designation = $_POST['designation'];
-        $email = $_POST['email'];
-        $username = $_POST['username'];
-        // $user_group = $_POST['user_group'];
-        // $date_of_birth = $_POST['date_of_birth'];
-        // $division = $_POST['division'];
-        $station = $_POST['station'];
-        // $date_transfered = $_POST['date_transfered'];
-        if ($pj && $fullname && $designation && $email && $username) {
-            if (isset($_POST['edit_pj']) && $_POST['edit_pj'] != '') {
-                $query = "UPDATE users SET pj = '$pj', fullname = '$fullname', username = '$username', designation = '$designation',"
-                        . " email = '$email', Station = '$station', "
-                        . " WHERE pj like '$_POST[edit_pj]'";
-                $insert_user = pg_query($conn, $query);
-            } else {
-                $query = "INSERT INTO users (pj, fullname, username, designation, email, "
-                        . " password, station) ";
-                $query .= " VALUES ('$pj', '$fullname', '$username', '$designation', '$email', "
-                        . "'pass', '$station')";
-                $insert_user = pg_query($conn, $query);
+  if (isset($_POST['submit'])){
+    $fullname = $_POST['fullname'];
+    $designation = $_POST['designation'];
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $pj = $_POST['pj'];
+    $station = $_POST['station'];
+    if ($fullname && $designation && $username && $email && $pj && $station){
+      $query = "INSERT INTO users (fullname, designation, username, email, pj, station, password) ";
+      $query .= " VALUES ('$fullname', '$designation', '$username', '$email', '$pj', '$station', 'pass')";
 
-                echo "user";
-            }
+      $insert_user = pg_query($conn, $query);
 
-            if ($insert_user) {
-                $query = "SELECT * FROM transfers WHERE PJ like '$pj' AND isnull(TransferFrom)";
-                $res = pg_query($conn, $query);
-                if ($rw = pg_fetch_array($res)) {
-                    $query = "UPDATE transfers SET DateIn = '$date_transfered', TransferTo = '$station', "
-                            . "ToDivision = '$division' WHERE PJ like '$pj' AND isnull(TransferFrom)";
-                    pg_query($conn, $query);
-                } else {
-                    $query = "INSERT INTO transfers (PJ, DateIn, TransferTo, ToDivision) VALUES "
-                            . "('$pj', '$date_transfered', '$station', '$division')";
-                    pg_query($conn, $query);
-                }
-                echo "<div class='alert alert-info'>User Inserted successfully</div>";
-            } else {
-                echo "Save failed";
-            }
-        }
+      if ($insert_user){
+        echo "User saved successfully";
+      } else {
+        echo "Save failed";
+      }
     }
+  }
 }
+
+// function insert_user() {
+//     global $conn;
+
+//     if (isset($_POST['submit'])) {
+//         $pj = $_POST['pj'];
+//         $fullname = $_POST['fullname'];
+//         $designation = $_POST['designation'];
+//         $email = $_POST['email'];
+//         $username = $_POST['username'];
+//         // $user_group = $_POST['user_group'];
+//         // $date_of_birth = $_POST['date_of_birth'];
+//         // $division = $_POST['division'];
+//         $station = $_POST['station'];
+        // $date_transfered = $_POST['date_transfered'];
+        // if ($pj && $fullname && $designation && $email && $username) {
+        //     if (isset($_POST['edit_pj']) && $_POST['edit_pj'] != '') {
+        //         $query = "UPDATE users SET pj = '$pj', fullname = '$fullname', username = '$username', designation = '$designation',"
+        //                 . " email = '$email', Station = '$station', "
+        //                 . " WHERE pj like '$_POST[edit_pj]'";
+        //         $insert_user = pg_query($conn, $query);
+        //     } else {
+        //         $query = "INSERT INTO users (pj, fullname, username, designation, email, "
+        //                 . " password, station) ";
+        //         $query .= " VALUES ('$pj', '$fullname', '$username', '$designation', '$email', "
+        //                 . "'pass', '$station')";
+        //         $insert_user = pg_query($conn, $query);
+
+        //         // echo "user";
+        //     }
+
+//             if ($insert_user) {
+//                 $query = "SELECT * FROM transfers WHERE PJ like '$pj' AND isnull(TransferFrom)";
+//                 $res = pg_query($conn, $query);
+//                 if ($rw = pg_fetch_array($res)) {
+//                     $query = "UPDATE transfers SET DateIn = '$date_transfered', TransferTo = '$station', "
+//                             . "ToDivision = '$division' WHERE PJ like '$pj' AND isnull(TransferFrom)";
+//                     pg_query($conn, $query);
+//                 } else {
+//                     $query = "INSERT INTO transfers (PJ, DateIn, TransferTo, ToDivision) VALUES "
+//                             . "('$pj', '$date_transfered', '$station', '$division')";
+//                     pg_query($conn, $query);
+//                 }
+//                 echo "<div class='alert alert-info'>User Inserted successfully</div>";
+//             } else {
+//                 echo "Save failed";
+//             }
+//         }
+//     }
+// }
 
 function insert_station() {
     global $conn;
@@ -103,7 +129,7 @@ function insert_adminunit() {
 }
 
 
-//insert strategy
+//insert strategy 
 function insert_strategy(){
 
     global $conn;
@@ -114,13 +140,23 @@ function insert_strategy(){
         $description = $_POST['description'];
         $performance_measure = $_POST['performance_measure'];
         $supervising_unit = $_POST['supervising_unit'];
-        $dates = $_POST['dates'];
+        $start_date = $_POST['start_date'];
+        $end_date = $_POST['end_date'];
         $completion_date = $_POST['completion_date'];
+        // echo "$strategy , $description , $performance_measure , $supervising_unit , $dates , $completion_date";
+    if ($strategy && $description && $performance_measure && $supervising_unit && $start_date && $end_date && $completion_date) {
 
-    if ($strategy && $description && $performance_measure && $supervising_unit && $dates && $completion_date) {
-        $query = "INSERT INTO strategy(strategy, description, performance_measure, supervising_unit, dates, completion_date) ";
-        $query .= " VALUES ('$strategy', '$description', '$performance_measure', '$supervising_unit', '$dates', $completion_date)";
-        //echo $query;
+        //calculate column serial
+        $strategy_id = 1;
+        $query = "select coalesce(max(strategy_id), 0) + 1 as sid from strategy";
+        $results = pg_query($query);
+        if ($r = pg_fetch_assoc($results)){
+            $strategy_id = $r['sid'];
+        }
+
+        $query = "INSERT INTO strategy(strategy_id, strategy, description, performance_measure, supervising_unit, startdate, intended_completion_date, completion_date) ";
+        $query .= " VALUES ($strategy_id, '$strategy', '$description', '$performance_measure', '$supervising_unit', '$start_date', '$end_date', '$completion_date')";
+        // echo $query;
         $insert_strategy = pg_query($conn, $query); 
         if($insert_strategy){
         echo "strategy inserted successfully";
@@ -151,7 +187,7 @@ function insert_theme(){
         //echo $query;
         $insert_theme = pg_query($conn, $query); 
         if($insert_theme){
-        echo "strategy inserted successfully";
+        echo "Theme inserted successfully";
         }else {
 
             echo "save failed";
@@ -186,9 +222,8 @@ function insert_theme(){
 //         }
 //     }
 // }
-
-
-function insert_activity(){
+//insert activity
+function insert_activity(){ 
 
     global $conn;
 

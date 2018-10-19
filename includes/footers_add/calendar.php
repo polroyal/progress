@@ -68,26 +68,26 @@ function  init_calendar() {
 	  },
 	  editable: true,
 	  events: [
-	  <?php
-	  $query = "SELECT * FROM request_v WHERE true ";
-	  if (strtolower($_SESSION['leave_group']) == 'admin'){
+	 <!-- <?php
+	  // $query = "SELECT * FROM request_v WHERE true ";
+	  // if (strtolower($_SESSION['leave_group']) == 'admin'){
 		  
-	  } else {
-		  $query .= " AND user_id like '$_SESSION[leave_pj]'";
-	  }
-	  if (isset($_GET['st'])){
-		  $query .= " AND status like '$_GET[st]' ";
-	  }
-	  $result = mysqli_query($conn, $query);
-	  while ($row = mysqli_fetch_assoc($result)){ 
+	  // } else {
+		 //  $query .= " AND user_id like '$_SESSION[leave_pj]'";
+	  // }
+	  // if (isset($_GET['st'])){
+		 //  $query .= " AND status like '$_GET[st]' ";
+	  // }
+	  // $result = mysqli_query($conn, $query);
+	  // while ($row = mysqli_fetch_assoc($result)){ 
 		  ?>
 		  {
-			title: '<?php echo $row['leave_type'] . ' (' . $row['fullname'] . ') ' . (($row['description'] == '') ? '' : ('for ' . $row['description'])); ?>',
+			<!-- title: '<?php echo $row['leave_type'] . ' (' . $row['fullname'] . ') ' . (($row['description'] == '') ? '' : ('for ' . $row['description'])); ?>',
 			start: '<?php echo $row['start_date']; ?>',
-			end: '<?php echo $row['end_date']; ?>'
-		  },
-		  <?php
-	  }
+			end: '<?php echo $row['end_date']; ?>'  -->
+		  }, 
+		  <?php 
+	  } 
 	  ?>
 	  ]
 	});
